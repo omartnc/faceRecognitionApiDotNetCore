@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FaceRecognitionDotNet" Version="1.2.3.13" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="C:\Users\apphic\.nuget\packages\dlibdotnet\19.17.0.20190623\build\..\runtimes\win-x64\native\DlibDotNetNative.dll" Link="DlibDotNetNative.dll" />
+    <Content Update="C:\Users\apphic\.nuget\packages\dlibdotnet\19.17.0.20190623\build\..\runtimes\win-x64\native\DlibDotNetNativeDnn.dll" Link="DlibDotNetNativeDnn.dll" />
+  </ItemGroup>
+
+</Project>
