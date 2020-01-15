@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -25,7 +26,7 @@ namespace faceRecognitionApi.Controllers
             _hostingEnvironment = hostingEnvironment;
         }
 
-
+        [EnableCors("*")]
         [HttpPost("UploadFaceImageReturnCode")]
         public async Task<IActionResult> UploadFaceImageReturnCode([FromBody] UploadImageModel model)
         {
@@ -85,6 +86,7 @@ namespace faceRecognitionApi.Controllers
             }
         }
 
+        [EnableCors("*")]
         [HttpPost("UploadFaceImageReturnName")]
         public async Task<IActionResult> UploadFaceImageReturnName([FromBody] UploadImageRecongnitionModel model)
         {
