@@ -159,7 +159,7 @@ namespace faceRecognitionApi.Controllers
                 }
                 else
                 {
-                    var returunModel = model.FaceDetails[indexOfSelectedPerson.Position].Name;
+                    var returunModel = model.FaceDetails[indexOfSelectedPerson.Position].Id;
                     return Ok(returunModel);
 
                 }
