@@ -81,7 +81,7 @@ namespace faceRecognitionApi.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest("Sistemde Hata Oluştu.");
+                return BadRequest("Sistemde Hata Oluştu. " + e.Message);
             }
         }
 
@@ -166,7 +166,7 @@ namespace faceRecognitionApi.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest("Sistemde Hata Oluştu.");
+                return BadRequest("Sistemde Hata Oluştu. "+e.Message);
             }
         }
     }
