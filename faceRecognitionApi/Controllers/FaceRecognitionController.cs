@@ -157,7 +157,7 @@ namespace faceRecognitionApi.Controllers
                 if (indexOfSelectedPerson == null)
                 {
 
-                    return BadRequest("Kişi Bulunamadı.");
+                    return Ok("Kişi Bulunamadı.");
                 }
                 else
                 {
@@ -168,7 +168,7 @@ namespace faceRecognitionApi.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest("Sistemde Hata Oluştu. "+e.Message);
+                return Ok("Sistemde Hata Oluştu. "+e.Message);
             }
         }
     }

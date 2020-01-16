@@ -58,6 +58,7 @@ namespace faceRecognitionApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
             app.UseDeveloperExceptionPage();
             app.UseCors(MyAllowSpecificOrigins);
 
