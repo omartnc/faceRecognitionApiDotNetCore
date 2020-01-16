@@ -26,7 +26,6 @@ namespace faceRecognitionApi.Controllers
             _hostingEnvironment = hostingEnvironment;
         }
 
-        [EnableCors("*")]
         [HttpPost("UploadFaceImageReturnCode")]
         public async Task<IActionResult> UploadFaceImageReturnCode([FromBody] UploadImageModel model)
         {
@@ -86,7 +85,6 @@ namespace faceRecognitionApi.Controllers
             }
         }
 
-        [EnableCors("*")]
         [HttpPost("UploadFaceImageReturnName")]
         public async Task<IActionResult> UploadFaceImageReturnName([FromBody] UploadImageRecongnitionModel model)
         {
