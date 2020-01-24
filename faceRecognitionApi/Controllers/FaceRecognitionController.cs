@@ -16,17 +16,16 @@ namespace faceRecognitionApi.Controllers
     [Route("[controller]")]
     public class FaceRecognitionController : ControllerBase
     {
-       
+
         private readonly ILogger<FaceRecognitionController> _logger;
         IHostingEnvironment _hostingEnvironment;
-        
+
         public FaceRecognitionController(ILogger<FaceRecognitionController> logger, IHostingEnvironment hostingEnvironment)
         {
             _logger = logger;
             _hostingEnvironment = hostingEnvironment;
         }
 
-        [EnableCors("*")]
         [HttpPost("UploadFaceImageReturnCode")]
         public async Task<IActionResult> UploadFaceImageReturnCode([FromBody] UploadImageModel model)
         {
@@ -59,7 +58,7 @@ namespace faceRecognitionApi.Controllers
                 var hostingInformation = _hostingEnvironment.ContentRootPath;
                 String fulldirectory = "./Contents/ProfilePics/" + uniqueFileName;
                 String faceData = "";
-                FaceRecognitionDotNet.FaceRecognition abc = FaceRecognitionDotNet.FaceRecognition.Create(hostingInformation+ "\\Contents\\ProfilePics\\");
+                FaceRecognitionDotNet.FaceRecognition abc = FaceRecognitionDotNet.FaceRecognition.Create(hostingInformation + "\\Contents\\ProfilePics\\");
                 var unknownImage = FaceRecognitionDotNet.FaceRecognition.LoadImageFile(fulldirectory);
                 var returns = abc.FaceEncodings(unknownImage);
                 if (returns.Count() > 0)
@@ -86,7 +85,6 @@ namespace faceRecognitionApi.Controllers
             }
         }
 
-        [EnableCors("*")]
         [HttpPost("UploadFaceImageReturnName")]
         public async Task<IActionResult> UploadFaceImageReturnName([FromBody] UploadImageRecongnitionModel model)
         {
@@ -108,16 +106,11 @@ namespace faceRecognitionApi.Controllers
                     Directory.CreateDirectory(filePath);
                 }
 
-                var uniqueFileName = $"{Guid.NewGuid()}";
-                var dbPath = Path.Combine(folderName, uniqueFileName);
-
+                var uniqueFileName = $"{Guid.NewGuid()}.jpg";
                 using (var fileStream = new FileStream(Path.Combine(filePath, uniqueFileName), FileMode.Create))
                 {
                     await imageDataStream.CopyToAsync(fileStream);
                 }
-
-
-
 
                 // Simdi bu egitilmiş dataları string'den double array'e döndürelim.
                 List<FaceRecognitionDotNet.FaceEncoding> egitilmis_data = new List<FaceRecognitionDotNet.FaceEncoding>();
@@ -149,26 +142,24 @@ namespace faceRecognitionApi.Controllers
                 {
                     Item = item,
                     Position = i
-                }).Where(m => m.Item == true).FirstOrDefault();
+                }).FirstOrDefault(m => m.Item);
 
-                var fileInfo = new System.IO.FileInfo(fulldirectory);
-                fileInfo.Delete();
+                //var fileInfo = new System.IO.FileInfo(fulldirectory);
+                //fileInfo.Delete();
 
                 if (indexOfSelectedPerson == null)
                 {
-
                     return Ok("Kişi Bulunamadı.");
                 }
                 else
                 {
                     var returunModel = model.FaceDetails[indexOfSelectedPerson.Position].Id;
                     return Ok(returunModel);
-
                 }
             }
             catch (Exception e)
             {
-                return Ok("Sistemde Hata Oluştu. "+e.Message);
+                return Ok("Sistemde Hata Oluştu. " + e.Message);
             }
         }
     }

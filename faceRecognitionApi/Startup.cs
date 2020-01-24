@@ -61,7 +61,7 @@ namespace faceRecognitionApi
 
             app.UseDeveloperExceptionPage();
             app.UseCors(MyAllowSpecificOrigins);
-
+            app.UseCors();
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {

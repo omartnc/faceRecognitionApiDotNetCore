@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="FaceRecognitionDotNet" Version="1.2.3.13" />
+    <PackageReference Include="OpenCvSharp3-AnyCPU" Version="4.0.0.20181129" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc3" />
   </ItemGroup>
 
